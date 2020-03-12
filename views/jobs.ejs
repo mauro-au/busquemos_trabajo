@@ -14,17 +14,17 @@
 </head>
 
 <body>
-
+    
     <div class="main">
         <div class="container">
             <h1><%= title %> <i class="fab fa-github title"></i></h1>
-            <form action="" id="formulario">
+            <form action="" id="formulario" name="fomul">
                 <div class="form-row search_form">
                     <div class="form-group col-md-8">
                         <div class="col-auto">
                             <i class="fas fa-map-marker-alt search_icon"></i>
                         </div>
-                        <select id="localizacion" class="form-control" placeholder="Buscar empleo">                           
+                        <select id="localizacion" class="form-control" placeholder="Buscar empleo" onchange="ShowSelected();">                           
                             <option class="select_holder" selected>Seleccione el Pais</option>
                             <option value="spain">España</option>
                             <option value="japon">Japon</option>
@@ -35,8 +35,8 @@
                             <option value="ingland">Inglaterra</option>
                         </select>
                     </div>
-
-                    <div class="col-md-4">
+                    
+                    <div class="btn-buscar col-md-4">
                         <button type="submit" id="buscar" class="btn btn-primary">buscar</button>
                     </div>
                 </div>
@@ -49,7 +49,8 @@
         </div>
     </div>
     
-    <div class="container ofert" id="lista"></div>
+    <div class="container ofert" id="lista">
+    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>

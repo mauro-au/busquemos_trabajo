@@ -26,7 +26,9 @@ const getjobs = async localizacion => {
 
     const lista =
 
-      `<div class="card mb-12" type="button" data-toggle="modal" data-target="#exampleModalLong${job.id}">
+      `
+      <div class="card-content">
+        <div class="card mb-12" type="button" data-toggle="modal" data-target="#exampleModalLong${job.id}">
           <div class="row no-gutters align_card">
               <div class="col-md-2 container_img">
                   <img class="card-img" src=${job.company_logo}>
@@ -39,12 +41,13 @@ const getjobs = async localizacion => {
                       </div>
                       <div class="footer_card col-md-12">
                           <p class="card-text"><i class="fas fa-briefcase ofert_icon"></i>${job.company}</p>
-                          <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt ofert_icon ml-3"></i>${job.location}</p>
-                          <p class="card-text card_right"><small class="text-muted"><i class="far fa-calendar-alt ofert_icon"></i>${job.created_at}</small></p>
+                          <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt ofert_icon ml-md-3"></i>${job.location}</p>
+                          <p class="card-text card_right"><small class="text-muted"><i class="far fa-calendar-alt ofert_icon"></i>${job.created_at.substr(0,19)}</small></p>
                       </div>
                   </div>
               </div>
           </div>
+        </div>
       </div>
 
       <!-- Modal -->
@@ -67,22 +70,22 @@ const getjobs = async localizacion => {
                   </div>
 
                   <div class="info">
-                      <div class="text-left col-md-8">
+                      <div class="text-lg-left text-center col-lg-8 col-md-12">
                           <p class="modal-icon"><i class="fas fa-map-marker-alt modal_icon ml-3"></i>${job.location}</p>
                       </div>
-                      <div class="col-md-4">
-                          <p class="modal-icon right">${job.type}</p>
+                      <div class="text-lg-right text-center col-lg-4 col-md-12">
+                          <p class="modal-icon">${job.type}</p>
                       </div>
                   </div>  
               </div>
 
               <div class="modal-body">
                   <div class="info mb-5">
-                      <div class="text-left col-md-6"><a href="${job.company_url}">
+                      <div class="text-lg-left text-center col-lg-5 col-md-12 mb-3"><a href="${job.company_url}">
                           <i class="fas fa-briefcase ofert_icon"></i>${job.company}</a>
                       </div>
-                      <div class="text-right col-md-6">
-                          <i class="far fa-calendar-alt ofert_icon"></i>${job.created_at}
+                      <div class="text-lg-right text-center col-lg-7 col-md-12">
+                          <i class="far fa-calendar-alt ofert_icon"></i>${job.created_at.substr(0,19)}
                       </div>
                   </div>
                   <div class="content">${job.description}</div>
@@ -100,9 +103,17 @@ const getjobs = async localizacion => {
     });
   };
 
-  $("#buscar").click(function(){
-      $(".main").animate({height: '380px', marginTop: '50px'});
-      $(".subtitle").animate({opacity: '1', margin: '90px 0 60px 0'});
-  });
+function ShowSelected() {
+
+    var combo = document.getElementById("localizacion");
+    var selected = combo.options[combo.selectedIndex].text;
+    if( selected !== "Seleccione el Pais" ){
+
+        $("#buscar").click(function(){
+            $(".main").animate({height: '380px', marginTop: '50px'});
+            $(".subtitle").animate({opacity: '1', margin: '90px 0 60px 0'});
+        });
+    }
+}
     
-  
+
